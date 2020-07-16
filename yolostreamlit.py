@@ -1,15 +1,13 @@
 import streamlit as st
 import cv2
 import numpy as np
-import os
-import pickle
 import pandas as pd
-from PIL import Image
+
 
 
 def class_name():
     classes = []
-    with open(r"C:\Users\movies\Desktop\python\new modules\yolov3_classname.txt","r") as f:
+    with open("https://raw.githubusercontent.com/jawaluke/yolo-object-detection/master/yolov3_classname.txt","r") as f:
         classes = [i.strip() for i in f.readlines()]
         return classes
 
@@ -20,21 +18,21 @@ def yolo_detect(image_path):
     try:
         
         # load yolo
-        weight_path =r"C:\Users\movies\Desktop\python\new modules\yolov3.weights"
-        config_path =r"C:\Users\movies\Desktop\python\new modules\yolov3.cfg"
+        weight_path ="https://pjreddie.com/media/files/yolov3.weights"
+        config_path ="https://raw.githubusercontent.com/jawaluke/yolo-object-detection/master/yolov3.cfg"
         net = cv2.dnn.readNet(weight_path , config_path)
 
         # creating a file for the yolo class name
         classes = class_name()
         
-        #layer_names = net.getLayerNames()
-        #outputlayers = [layer_names[i[0]-1] for i in net.getUnconnectedOutLayers()]
+        layer_names = net.getLayerNames()
+        outputlayers = [layer_names[i[0]-1] for i in net.getUnconnectedOutLayers()]
         
 
         # pickle load
-        model_path = r"C:\Users\movies\Desktop\python\ml streamlit\yolo_model_pickle.pickle"
+        #model_path = r"C:\Users\movies\Desktop\python\ml streamlit\yolo_model_pickle.pickle"
 
-        outputlayers = pickle.load( open(model_path ,"rb"))
+        #outputlayers = pickle.load( open(model_path ,"rb"))
         
         # loading the image
 
