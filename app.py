@@ -18,7 +18,7 @@ def yolo_detect(image_path):
     try:
         
         # load yolo
-        weight_path ="https://pjreddie.com/media/files/yolov3.weights"
+        weight_path ="https://drive.google.com/file/d/1w3OV2rx3ThMbPAnxpm98QrtJ9xuF-9r7/view?usp=sharing"
         config_path ="https://raw.githubusercontent.com/jawaluke/yolo-object-detection/master/yolov3.cfg"
         net = cv2.dnn.readNet(weight_path , config_path)
 
